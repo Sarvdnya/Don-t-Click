@@ -9,6 +9,7 @@ import { EASE, DURATION } from "@/lib/animations";
 
 const NAV_LINKS = [
   { label: "WORK", href: "#work" },
+  { label: "EXPERIENCE", href: "#experience" },
   { label: "ABOUT", href: "#about" },
   { label: "LAB", href: "#lab" },
   { label: "CONTACT", href: "#contact" },
@@ -17,12 +18,40 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const ids = NAV_LINKS.map((link) => link.href.slice(1)).filter((id) =>
+      document.getElementById(id)
+    );
+    if (ids.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive(`#${entry.target.id}`);
+            break;
+          }
+        }
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: 0 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -58,7 +87,11 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted transition-colors duration-300 hover:text-foreground"
+                aria-current={active === link.href ? "true" : undefined}
+                className={cn(
+                  "font-mono text-[10px] uppercase tracking-[0.24em] transition-colors duration-300 hover:text-foreground",
+                  active === link.href ? "text-accent" : "text-muted"
+                )}
               >
                 {link.label}
               </a>
@@ -101,7 +134,11 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-border-subtle py-6 font-display text-4xl font-semibold tracking-tight text-foreground"
+                  aria-current={active === link.href ? "true" : undefined}
+                  className={cn(
+                    "border-b border-border-subtle py-6 font-display text-4xl font-semibold tracking-tight transition-colors duration-300",
+                    active === link.href ? "text-accent" : "text-foreground"
+                  )}
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 12 }}
