@@ -1,0 +1,127 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import Container from "@/components/ui/Container";
+import { cn } from "@/lib/utils";
+import { EASE, DURATION } from "@/lib/animations";
+
+const NAV_LINKS = [
+  { label: "WORK", href: "#work" },
+  { label: "ABOUT", href: "#about" },
+  { label: "LAB", href: "#lab" },
+  { label: "CONTACT", href: "#contact" },
+];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
+      <header
+        className={cn(
+          "nav-enter fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+          scrolled
+            ? "border-b border-border-subtle bg-background/70 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
+        )}
+      >
+        <Container className="flex h-16 items-center justify-between lg:h-[72px]">
+          <a
+            href="#top"
+            className="font-display text-sm font-semibold tracking-[0.28em] text-foreground"
+          >
+            SARVDNYA
+          </a>
+
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-8 md:flex"
+          >
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted transition-colors duration-300 hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <span className="hidden items-center gap-2.5 font-mono text-[9px] uppercase tracking-[0.22em] text-muted lg:flex">
+              <span className="status-dot" aria-hidden="true" />
+              Available to build
+            </span>
+
+            <button
+              type="button"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-border-subtle text-foreground md:hidden"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
+        </Container>
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            className="fixed inset-0 z-40 flex flex-col justify-center bg-background/95 px-6 backdrop-blur-lg md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: DURATION.fast, ease: EASE }}
+          >
+            <nav aria-label="Mobile" className="flex flex-col gap-2">
+              {NAV_LINKS.map((link, index) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="border-b border-border-subtle py-6 font-display text-4xl font-semibold tracking-tight text-foreground"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{
+                    duration: DURATION.base,
+                    delay: 0.05 * index,
+                    ease: EASE,
+                  }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </nav>
+            <p className="mt-10 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
+              <span className="status-dot" aria-hidden="true" />
+              Available to build
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
