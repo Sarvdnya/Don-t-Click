@@ -45,9 +45,8 @@ export default function AboutDetails() {
       <div className="about-tech-line border-t border-border-subtle pt-6 opacity-0">
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {TECH_WORDS.map((word) => (
-            <button
+            <span
               key={word}
-              type="button"
               data-cursor="view"
               className="group relative font-mono text-xs uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:text-foreground"
               onMouseEnter={() => setHoveredWord(word)}
@@ -60,13 +59,14 @@ export default function AboutDetails() {
             >
               {word}
               <span
+                aria-hidden="true"
                 className="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300"
                 style={{
                   width: hoveredWord === word ? "100%" : "0%",
                   transition: "width 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
                 }}
               />
-            </button>
+            </span>
           ))}
         </div>
       </div>

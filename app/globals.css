@@ -1188,4 +1188,19 @@ html.no-native-cursor * {
     animation: none;
     opacity: 0.045;
   }
+
+  /* Content is only revealed by scroll-triggered GSAP; reveal it statically
+     when motion is reduced so it can never stay hidden. */
+  .about-process-word,
+  .about-info-block,
+  .about-tech-line {
+    opacity: 1 !important;
+  }
+
+  /* Hover-only tech lists must remain readable without motion. */
+  .sk-group-tech {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
 }

@@ -26,6 +26,7 @@ export default function ProjectVisual({ visualType }: ProjectVisualProps) {
   const onMove = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
       if (reduce) return;
+      if (!window.matchMedia("(pointer: fine)").matches) return;
       const el = containerRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();

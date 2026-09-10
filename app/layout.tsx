@@ -29,19 +29,51 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const TITLE = "Sarvdnya Purnale — Frontend Developer & Digital Product Builder";
+const DESCRIPTION =
+  "Sarvdnya Purnale is a frontend developer and digital product builder crafting interactive interfaces, AI-powered applications and thoughtful web experiences.";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? null;
+
 export const metadata: Metadata = {
-  title: "Sarvdnya Purnale — Developer & Builder",
-  description:
-    "Personal portfolio of Sarvdnya Purnale, a Computer Science student and developer building digital experiences, web products and creative technology.",
-  openGraph: {
-    title: "Sarvdnya Purnale — Developer & Builder",
-    description:
-      "Personal portfolio of Sarvdnya Purnale, a Computer Science student and developer building digital experiences, web products and creative technology.",
-    type: "website",
+  metadataBase: SITE_URL ? new URL(SITE_URL) : undefined,
+  title: {
+    default: TITLE,
+    template: "%s — Sarvdnya Purnale",
   },
-  icons: {
-    icon:
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0c'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%23ff5a1f' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E",
+  description: DESCRIPTION,
+  applicationName: "Sarvdnya Purnale Portfolio",
+  creator: "Sarvdnya Purnale",
+  authors: [{ name: "Sarvdnya Purnale" }],
+  keywords: [
+    "Sarvdnya Purnale",
+    "frontend developer",
+    "UI engineer",
+    "digital product builder",
+    "React",
+    "Next.js",
+    "interactive interfaces",
+    "AI applications",
+    "web development portfolio",
+  ],
+  alternates: {
+    canonical: SITE_URL ?? undefined,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Sarvdnya Purnale",
+    locale: "en_US",
+    url: SITE_URL ?? undefined,
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
