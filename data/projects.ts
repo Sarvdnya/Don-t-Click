@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: "DOCUMOTION\nAI",
     category: "AI / DOCUMENT INTELLIGENCE",
     description:
-      "An AI-powered document-to-video experimentation platform that analyzes uploaded PDFs, extracts and understands their content, retrieves relevant context, and uses that information to generate structured video and story content.",
+      "An AI-powered document-to-video experimentation platform that analyzes uploaded PDFs, extracts and understands their content, retrieves relevant context, and uses that information to generate structured video and story content. Video generation is currently experimental, not a finished feature.",
     technologies: [
       "Next.js",
       "TypeScript",

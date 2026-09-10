@@ -9,7 +9,7 @@ const DETAIL_BLOCKS = [
   },
   {
     label: "FOCUS",
-    lines: ["Software Enginnering", "AI / Emerging Technology", "Product Experiences"],
+    lines: ["Software Engineering", "AI / Emerging Technology", "Product Experiences"],
   },
   {
     label: "CURRENTLY",

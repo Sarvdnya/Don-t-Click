@@ -1,8 +1,19 @@
 "use client";
 
-import { useRef, useCallback, type MouseEvent } from "react";
+import { Fragment, useRef, useCallback, type MouseEvent } from "react";
 import { useReducedMotion } from "framer-motion";
 import type { ProjectVisualType } from "@/data/projects";
+
+const PIPELINE = [
+  "PDF",
+  "ANALYZE",
+  "EXTRACT",
+  "CHUNK",
+  "EMBED",
+  "RETRIEVE",
+  "UNDERSTAND",
+  "GENERATE",
+];
 
 type ProjectVisualProps = {
   visualType: ProjectVisualType;
@@ -95,7 +106,7 @@ function AiDocsVisual() {
       </div>
       <div className="pv-ai-docs__chat pv-layer-2">
         <div className="pv-ai-docs__chat-header">
-          CONTEXTUAL AI
+          RAG / CONTEXT
         </div>
         <div className="pv-ai-docs__chat-messages">
           <div className="pv-ai-docs__chat-msg pv-ai-docs__chat-msg--user">
@@ -112,6 +123,18 @@ function AiDocsVisual() {
           <span>Ask about this document...</span>
           <div className="pv-ai-docs__chat-send" />
         </div>
+      </div>
+      <div className="pv-ai-docs__pipeline" aria-hidden="true">
+        {PIPELINE.map((step, index) => (
+          <Fragment key={step}>
+            {index > 0 && <span className="pv-ai-docs__pipeline-arrow">→</span>}
+            <span className="pv-ai-docs__pipeline-step">{step}</span>
+          </Fragment>
+        ))}
+        <span className="pv-ai-docs__pipeline-badge">
+          <span className="pv-ai-docs__preview-dot" />
+          GENERATIVE EXPERIMENT
+        </span>
       </div>
     </div>
   );
@@ -262,7 +285,7 @@ function PortfolioVisual() {
             <div className="pv-portfolio__cta pv-portfolio__cta--primary" />
             <div className="pv-portfolio__cta pv-portfolio__cta--ghost" />
           </div>
-          <div className="pv-portfolio__index">01 / 05</div>
+          <div className="pv-portfolio__index">01 / 06</div>
         </div>
       </div>
     </div>

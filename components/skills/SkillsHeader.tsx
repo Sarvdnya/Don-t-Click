@@ -9,7 +9,7 @@ export default function SkillsHeader() {
         <div className="sk-label flex items-center gap-2">
           <SectionLabel index="05">Capabilities</SectionLabel>
           <span className="font-mono text-[10px] tracking-[0.28em] text-muted/50">
-            / 05
+            / 06
           </span>
         </div>
 

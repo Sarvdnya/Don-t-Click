@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { marqueeTechnologies } from "@/data/skills";
+import { cn } from "@/lib/utils";
 
 function Segment() {
   return (
@@ -13,12 +17,33 @@ function Segment() {
 }
 
 export default function TechMarquee() {
+  const ref = useRef<HTMLElement | null>(null);
+  const [offscreen, setOffscreen] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setOffscreen(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={ref}
       aria-label="Technologies I work with"
       className="tech-marquee border-y border-border-subtle py-5"
     >
-      <div className="tech-marquee__track">
+      <div
+        className={cn(
+          "tech-marquee__track",
+          offscreen && "tech-marquee__track--paused"
+        )}
+      >
         <Segment />
         <Segment />
         <Segment />

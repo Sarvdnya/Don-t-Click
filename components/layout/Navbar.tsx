@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils";
 import { EASE, DURATION } from "@/lib/animations";
 
 const NAV_LINKS = [
-  { label: "WORK", href: "#work" },
+  { label: "ABOUT", href: "#about" },
+  { label: "PROJECTS", href: "#projects" },
   { label: "EXPERIENCE", href: "#experience" },
   { label: "CAPABILITIES", href: "#skills" },
-  { label: "ABOUT", href: "#about" },
   { label: "CONTACT", href: "#contact" },
 ];
 

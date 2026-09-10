@@ -462,7 +462,7 @@ html.no-native-cursor * {
 
 .pv-ai-docs__chat {
   position: absolute;
-  bottom: -22px;
+  bottom: 24px;
   right: -16px;
   width: min(58%, 300px);
   display: flex;
@@ -538,6 +538,46 @@ html.no-native-cursor * {
   margin-left: auto;
   border-radius: 4px;
   background: var(--accent);
+}
+
+/* DocuMotion workflow pipeline */
+
+.pv-ai-docs__pipeline {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  padding: 7px 12px;
+  border-top: 1px solid var(--border);
+  background: rgba(10, 10, 12, 0.82);
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.pv-ai-docs__pipeline-step {
+  text-transform: uppercase;
+}
+
+.pv-ai-docs__pipeline-arrow {
+  color: rgba(255, 90, 31, 0.6);
+}
+
+.pv-ai-docs__pipeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  padding: 2px 8px;
+  border: 1px solid rgba(255, 90, 31, 0.35);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 6px;
+  letter-spacing: 0.18em;
 }
 
 /* Landing page */
@@ -1036,7 +1076,8 @@ html.no-native-cursor * {
 }
 
 .tech-marquee:hover .tech-marquee__track,
-.tech-marquee:focus-within .tech-marquee__track {
+.tech-marquee:focus-within .tech-marquee__track,
+.tech-marquee__track--paused {
   animation-play-state: paused;
 }
 

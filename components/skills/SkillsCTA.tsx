@@ -27,7 +27,7 @@ export default function SkillsCTA() {
           </h2>
 
           <p className="sk-cta-meta mt-9 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-[10px] uppercase tracking-[0.28em] text-muted/60">
-            <span>05 / 05 — End of index</span>
+            <span>05 / 06 — End of index</span>
             <span className="hidden sm:inline">Next: contact</span>
           </p>
 
@@ -36,7 +36,7 @@ export default function SkillsCTA() {
               <Button href="#contact">Let&rsquo;s connect →</Button>
             </Magnetic>
             <Magnetic>
-              <Button href="#work" variant="ghost">
+              <Button href="#projects" variant="ghost">
                 View my work
               </Button>
             </Magnetic>

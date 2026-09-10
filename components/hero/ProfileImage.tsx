@@ -20,7 +20,7 @@ function PortraitPlaceholder() {
       <p className="text-center font-mono text-[9px] uppercase leading-[1.8] tracking-[0.24em] text-muted">
         Portrait
         <br />
-        public/images/profile.pnj
+        public/images/profile.png
       </p>
     </div>
   );

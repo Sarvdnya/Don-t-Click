@@ -6,7 +6,7 @@ export default function ExperienceHeader() {
       <div className="ex-label flex items-center gap-2">
         <SectionLabel index="04">Experience</SectionLabel>
         <span className="font-mono text-[10px] tracking-[0.28em] text-muted/50">
-          / 05
+          / 06
         </span>
       </div>
 

@@ -27,7 +27,7 @@ function MaskedLine({
   const reduce = useReducedMotion();
 
   return (
-    <span className="block overflow-hidden">
+    <span className="block overflow-hidden py-1">
       <motion.span
         className={className}
         initial={{ y: reduce ? 0 : "112%" }}
@@ -177,7 +177,7 @@ export default function Hero() {
               className="mt-11 flex flex-wrap items-center gap-4"
             >
               <Magnetic>
-                <Button href="#work">
+                <Button href="#projects">
                   View my work
                 </Button>
               </Magnetic>
@@ -221,7 +221,7 @@ export default function Hero() {
       </div>
 
       <span className="absolute bottom-8 left-8 hidden font-mono text-[9px] uppercase tracking-[0.3em] text-muted sm:block">
-        01 / 05
+        01 / 06
       </span>
 
       <span className="absolute right-8 top-1/2 hidden origin-center -translate-y-1/2 rotate-90 font-mono text-[9px] uppercase tracking-[0.3em] text-muted lg:block">

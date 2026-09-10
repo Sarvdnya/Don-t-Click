@@ -168,13 +168,13 @@ export default function Projects() {
   }, [reduce]);
 
   return (
-    <section ref={sectionRef} id="work" aria-label="Selected work">
+    <section ref={sectionRef} id="projects" aria-label="Selected work">
       <Container>
         <header className="pt-[clamp(120px,16vw,220px)] pb-[clamp(40px,6vw,80px)]">
           <div className="pj-intro-label flex items-center gap-2">
             <SectionLabel index="03">Selected Work</SectionLabel>
             <span className="font-mono text-[10px] tracking-[0.28em] text-muted/50">
-              / 05
+              / 06
             </span>
           </div>
 

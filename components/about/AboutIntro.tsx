@@ -43,7 +43,12 @@ export default function AboutIntro() {
     <div className="flex flex-col gap-12 lg:gap-16">
       <div>
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}>
-          <SectionLabel index="02">About</SectionLabel>
+          <div className="flex items-center gap-2">
+            <SectionLabel index="02">About</SectionLabel>
+            <span className="font-mono text-[10px] tracking-[0.28em] text-muted/50">
+              / 06
+            </span>
+          </div>
         </motion.div>
 
         <h2 className="mt-8 font-display font-semibold tracking-[-0.03em]">
