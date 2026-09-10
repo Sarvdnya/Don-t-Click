@@ -10,8 +10,8 @@ import { EASE, DURATION } from "@/lib/animations";
 const NAV_LINKS = [
   { label: "WORK", href: "#work" },
   { label: "EXPERIENCE", href: "#experience" },
+  { label: "CAPABILITIES", href: "#skills" },
   { label: "ABOUT", href: "#about" },
-  { label: "LAB", href: "#lab" },
   { label: "CONTACT", href: "#contact" },
 ];
 
